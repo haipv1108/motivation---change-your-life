@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Motivation - Change your life</string>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <string name="title_favorites">Favorites</string>
+    <string name="title_settings">Setting</string>
+    <string name="whats_hot">Whats Hot</string>
+    <string name="title_home">Search</string>
+    <string name="logout">Logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="please_select_your_level">Please select your level</string>
+    <string name="i_understand">1. I understand.</string>
+    <string name="i_can_do_it">2. I can do it.</string>
+    <string name="i_won_myself">3. I\'m done. I won myself.</string>
+    <string name="for_when_you_begin_love_for_me">For When You Begin Love For Me</string>
+    <string name="for_when_you_begin_love_for_me_for_when_you_begin_love_for_me_for_when_you_begin_love_for_me_for_when_you_begin_love_for_me">For When You Begin Love For Me For When You Begin Love For Me For When You Begin Love For Me For When You Begin Love For Me</string>
+    <string name="please_list_3_actions_you_did">Please list 3 actions you did</string>
+    <string name="action_1">Action 1</string>
+    <string name="action_2">Action 2</string>
+    <string name="action_3">Action 3</string>
+</resources>

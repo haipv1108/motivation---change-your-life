@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/_3sdp"
+        android:elevation="3dp"
+        card_view:cardCornerRadius="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:paddingRight="@dimen/_3sdp"
+                android:paddingLeft="@dimen/_3sdp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/motivation_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="450dp"
+                    android:background="@drawable/m01">
+
+                    <ImageView
+                        android:id="@+id/motivation_status"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"
+                        android:paddingLeft="-55dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/label_processing" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_1sdp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/motivation_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textAppearance="@android:style/TextAppearance.Material.Body2"  />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=". "
+                        android:textAppearance="@android:style/TextAppearance.Material.Body2" />
+
+                    <TextView
+                        android:id="@+id/motivation_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="For When You Begin Love For Me"
+                        android:textAppearance="@android:style/TextAppearance.Material.Body2"  />
+                </LinearLayout>
+
+            </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

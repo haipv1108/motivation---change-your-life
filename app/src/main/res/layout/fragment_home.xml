@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.brine.motivation_changeyourlife.flagment.HomeFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_motivation_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/_5sdp"
+        android:paddingRight="@dimen/_5sdp"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:src="@drawable/btn_go_top"
+        app:layout_anchor="@id/recycle_motivation_card"
+        app:layout_anchorGravity="center|left|start"
+        app:fabSize="auto"
+        app:layout_behavior="com.support.android.designlibdemo.ScrollAwareFABBehavior"
+        app:borderWidth="0dp" />
+
+</FrameLayout>
