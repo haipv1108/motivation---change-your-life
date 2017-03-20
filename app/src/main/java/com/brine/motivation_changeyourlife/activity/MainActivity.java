@@ -1,9 +1,10 @@
-package com.brine.motivation_changeyourlife;
+package com.brine.motivation_changeyourlife.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
+import com.brine.motivation_changeyourlife.R;
 import com.brine.motivation_changeyourlife.flagment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {

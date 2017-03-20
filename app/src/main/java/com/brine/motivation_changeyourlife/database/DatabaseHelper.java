@@ -29,9 +29,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String KEY_IS_UNDERSTAND_MOTIVATION_CARD = "is_understand";
     public static final String KEY_IS_CAN_DO_MOTIVATION_CARD = "is_can_do";
     public static final String KEY_IS_DONE_MOTIVATION_CARD = "is_done";
-    public static final String KEY_ACTION1_MOTIVATION_CARD = "action1";
-    public static final String KEY_ACTION2_MOTIVATION_CARD = "action2";
-    public static final String KEY_ACTION3_MOTIVATION_CARD = "action3";
 
     public static final String CREATE_TABLE_MOTIVATION_CARD =
             "CREATE TABLE " + TABLE_MOTIVATION_CARD + "(" +
@@ -43,9 +40,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     ", " + KEY_IS_UNDERSTAND_MOTIVATION_CARD + " INTEGER DEFAULT 0" +
                     ", " + KEY_IS_CAN_DO_MOTIVATION_CARD + " INTEGER DEFAULT 0" +
                     ", " + KEY_IS_DONE_MOTIVATION_CARD + " INTEGER DEFAULT 0" +
-                    ", " + KEY_ACTION1_MOTIVATION_CARD + " TEXT" +
-                    "," + KEY_ACTION2_MOTIVATION_CARD + " TEXT" +
-                    ", " + KEY_ACTION3_MOTIVATION_CARD + " TEXT " +
                     ")";
 
     private SQLiteDatabase db;
@@ -163,9 +157,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(KEY_IS_UNDERSTAND_MOTIVATION_CARD, motivationCard.getUnderstand());
         values.put(KEY_IS_CAN_DO_MOTIVATION_CARD, motivationCard.getCanDoIt());
         values.put(KEY_IS_DONE_MOTIVATION_CARD, motivationCard.getDoneIt());
-        values.put(KEY_ACTION1_MOTIVATION_CARD, motivationCard.getAction1());
-        values.put(KEY_ACTION2_MOTIVATION_CARD, motivationCard.getAction2());
-        values.put(KEY_ACTION3_MOTIVATION_CARD, motivationCard.getAction3());
         return values;
     }
 
@@ -178,10 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 .setStatus(cursor.getInt(cursor.getColumnIndex(KEY_STATUS_MOTIVATION_CARD)))
                 .setUnderstand(cursor.getInt(cursor.getInt(cursor.getColumnIndex(KEY_IS_UNDERSTAND_MOTIVATION_CARD))))
                 .setCanDoIt(cursor.getInt(cursor.getInt(cursor.getColumnIndex(KEY_IS_CAN_DO_MOTIVATION_CARD))))
-                .setDoneIt(cursor.getInt(cursor.getInt(cursor.getColumnIndex(KEY_IS_DONE_MOTIVATION_CARD))))
-                .setAction1(cursor.getString(cursor.getColumnIndex(KEY_ACTION1_MOTIVATION_CARD)))
-                .setAction2(cursor.getString(cursor.getColumnIndex(KEY_ACTION2_MOTIVATION_CARD)))
-                .setAction3(cursor.getString(cursor.getColumnIndex(KEY_ACTION3_MOTIVATION_CARD)));
+                .setDoneIt(cursor.getInt(cursor.getInt(cursor.getColumnIndex(KEY_IS_DONE_MOTIVATION_CARD))));
         return motivationCard;
     }
 }

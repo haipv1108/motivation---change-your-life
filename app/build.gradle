@@ -33,5 +33,7 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.5.2'
     compile 'com.intuit.sdp:sdp-android:1.0.3'
     compile 'com.android.volley:volley:1.0.0'
+    compile 'org.sufficientlysecure:donations:2.5'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }

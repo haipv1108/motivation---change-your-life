@@ -20,9 +20,6 @@ public class MotivationCard {
     private boolean isUnderstand;
     private boolean isCanDoIt;
     private boolean isDoneIt;
-    private String action1;
-    private String action2;
-    private String action3;
 
     public MotivationCard(){
 
@@ -37,9 +34,6 @@ public class MotivationCard {
         this.isUnderstand = false;
         this.isCanDoIt = false;
         this.isDoneIt = false;
-        this.action1 = "";
-        this.action2 = "";
-        this.action3 = "";
     }
 
     public int getId() {
@@ -144,33 +138,6 @@ public class MotivationCard {
         }else{
             isDoneIt = true;
         }
-        return this;
-    }
-
-    public String getAction1() {
-        return action1;
-    }
-
-    public MotivationCard setAction1(String action1) {
-        this.action1 = action1;
-        return this;
-    }
-
-    public String getAction2() {
-        return action2;
-    }
-
-    public MotivationCard setAction2(String action2) {
-        this.action2 = action2;
-        return this;
-    }
-
-    public String getAction3() {
-        return action3;
-    }
-
-    public MotivationCard setAction3(String action3) {
-        this.action3 = action3;
         return this;
     }
 }

@@ -9,12 +9,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +44,6 @@ public class DetailsFragment extends Fragment {
     private TextView mTvTitle, mTvDescription;
     private ImageView mImageDetails;
     private CheckBox mCheckboxUnderstand, mCheckboxCanDo, mCheckboxDoneIt;
-    private EditText mEdtAction1, mEdtAction2, mEdtAction3;
 
     private MotivationCard mMotivationCard;
     private DatabaseHelper mDatabase;
@@ -72,10 +74,7 @@ public class DetailsFragment extends Fragment {
                 "Description: " + mMotivationCard.getDescription() + "\n" +
                 "Understand: " + mMotivationCard.getUnderstand() + "\n" +
                 "CanDoIt: " + mMotivationCard.getCanDoIt() + "\n" +
-                "DoneIt: " + mMotivationCard.getDoneIt() + "\n" +
-                "Action1: " + mMotivationCard.getAction1() + "\n" +
-                "Action2: " + mMotivationCard.getAction2() + "\n" +
-                "Action3: " + mMotivationCard.getAction3() + "\n");
+                "DoneIt: " + mMotivationCard.getDoneIt() + "\n");
         initData();
         mFabSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +84,11 @@ public class DetailsFragment extends Fragment {
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 saveData();
-                                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                                if(!checkedDone()){
+                                    Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    donateMe();
+                                }
                             }
                         })
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -136,9 +139,6 @@ public class DetailsFragment extends Fragment {
         mCheckboxUnderstand = (CheckBox) view.findViewById(R.id.checkbox_understand);
         mCheckboxCanDo = (CheckBox) view.findViewById(R.id.checkbox_can_do_it);
         mCheckboxDoneIt = (CheckBox) view.findViewById(R.id.checkbox_done_it);
-        mEdtAction1 = (EditText) view.findViewById(R.id.edt_action1);
-        mEdtAction2 = (EditText) view.findViewById(R.id.edt_action2);
-        mEdtAction3 = (EditText) view.findViewById(R.id.edt_action3);
     }
 
     private void initData(){
@@ -160,9 +160,6 @@ public class DetailsFragment extends Fragment {
             mCheckboxUnderstand.setChecked(mMotivationCard.isUnderstand());
             mCheckboxCanDo.setChecked(mMotivationCard.isCanDoIt());
             mCheckboxDoneIt.setChecked(mMotivationCard.isDoneIt());
-            mEdtAction1.setText(mMotivationCard.getAction1());
-            mEdtAction2.setText(mMotivationCard.getAction2());
-            mEdtAction3.setText(mMotivationCard.getAction3());
         }else{
             //TODO: back
         }
@@ -171,16 +168,13 @@ public class DetailsFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-//        saveData();
+        saveData();
     }
 
     private void saveData(){
         mMotivationCard.setUnderstand(mCheckboxUnderstand.isChecked()? CHECKED: UNCHECKED);
         mMotivationCard.setCanDoIt(mCheckboxCanDo.isChecked()? CHECKED: UNCHECKED);
         mMotivationCard.setDoneIt(mCheckboxDoneIt.isChecked()? CHECKED: UNCHECKED);
-        mMotivationCard.setAction1(mEdtAction1.getText().toString());
-        mMotivationCard.setAction2(mEdtAction2.getText().toString());
-        mMotivationCard.setAction3(mEdtAction3.getText().toString());
         if(checkedDone()){
             mMotivationCard.setStatus(STATUS_DONE);
         }
@@ -190,19 +184,34 @@ public class DetailsFragment extends Fragment {
                 "Description: " + mMotivationCard.getDescription() + "\n" +
                 "Understand: " + mMotivationCard.getUnderstand() + "\n" +
                 "CanDoIt: " + mMotivationCard.getCanDoIt() + "\n" +
-                "DoneIt: " + mMotivationCard.getDoneIt() + "\n" +
-                "Action1: " + mMotivationCard.getAction1() + "\n" +
-                "Action2: " + mMotivationCard.getAction2() + "\n" +
-                "Action3: " + mMotivationCard.getAction3() + "\n");
+                "DoneIt: " + mMotivationCard.getDoneIt() + "\n");
         mDatabase.updateMotivationCard(mMotivationCard);
     }
 
     private boolean checkedDone(){
-        if(mMotivationCard.isUnderstand() && mMotivationCard.isCanDoIt() &&
-                mMotivationCard.isDoneIt() && mMotivationCard.getAction1().length() > 0 &&
-                mMotivationCard.getAction2().length() > 0 && mMotivationCard.getAction3().length() > 0){
+        if(mMotivationCard.isUnderstand() && mMotivationCard.isCanDoIt() && mMotivationCard.isDoneIt()){
             return true;
         }
         return false;
+    }
+
+    private void donateMe(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext())
+                .setTitle("Can you donate me?")
+                .setIcon(R.drawable.ic_success)
+                .setMessage("Have you really confidence that you have won yourself?")
+                .setPositiveButton("Yes, donate you", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNegativeButton("Yes, but later", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "Thanks very much!", Toast.LENGTH_LONG).show();
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
     }
 }
